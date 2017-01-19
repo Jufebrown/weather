@@ -11,10 +11,12 @@ angular
         templateUrl: '/partials/weather.html'
       })
   })
+
   .controller('RootCtrl', function($scope, $location) {
     console.log('I am a root controller')
     $scope.gotoWeather = () => {$location.url(`/weather/${$scope.zip}`)}
   })
+
   .controller('WeatherCtrl', function(weatherFactory, $routeParams, $scope) {
     console.log('I am a weather controller')
     weatherFactory
@@ -24,6 +26,7 @@ angular
         $scope.city = weather.city
       })
   })
+
   .factory('weatherFactory', ($http) => {
     return {
       getWeather (zipcode) {
