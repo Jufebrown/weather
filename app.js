@@ -14,10 +14,13 @@ angular
 
     const checkForAuth = {
       checkForAuth: function($location) {
-        if (firbase.auth().currentUser === null) {
-          $location.url('/')
-        }
-      }
+        const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+          unsubscribe()
+          if(!user) {
+            $location.url('/')
+          }
+        })
+      })
     }
 
     $routeProvider
@@ -31,19 +34,6 @@ angular
         resolve: checkForAuth
       })
   })
-
-  .run(($location) => {
-    console.log('run executing')
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        // ???
-        console.log('logged in')
-      } else {
-        $location.url('/')
-      }
-    })
-  })
-
 
   .controller('RootCtrl', function($scope, $location) {
     console.log('I am a root controller')
