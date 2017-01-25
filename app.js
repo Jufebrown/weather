@@ -50,6 +50,16 @@ angular
       })
   })
 
+  .controller('LoginCtrl', function($scope, authFactory, $location) {
+    $scope.login = () => {
+      authFactory.login($scope.email, $scope.password)
+      .then(() => {
+        $location.url('/')
+        // $scope.apply()
+      })
+    }
+  })
+
   .factory('weatherFactory', ($http) => {
     return {
       getWeather (zipcode) {
