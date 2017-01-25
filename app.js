@@ -3,7 +3,7 @@ angular
   .config(($routeProvider) => {
 
     // Initialize Firebase
-    var config = {
+    const config = {
       apiKey: "AIzaSyA83A4Nz9ZO32NiPeNF8zdcYPTTPb3PYCQ",
       authDomain: "c17-firebase-auth-jufe.firebaseapp.com",
       databaseURL: "https://c17-firebase-auth-jufe.firebaseio.com",
