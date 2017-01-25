@@ -27,7 +27,8 @@ angular
       })
       .when('/weather/:zipcode', {
         controller: 'WeatherCtrl',
-        templateUrl: '/partials/weather.html'
+        templateUrl: '/partials/weather.html',
+        resolve: checkForAuth
       })
   })
 
