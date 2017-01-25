@@ -75,10 +75,10 @@ angular
     }
   })
 
-  .factory('authFactory', () => {
+  .factory('authFactory', ($q) => {
     return {
       login(email,pass) {
-        firebase.signInWithEmailAndPassword(email,pass)
+        return $q.resolve(firebase.auth().signInWithEmailAndPassword(email,pass))
       },
       getUserId () {
         return firebase.auth().currentUser.uid
