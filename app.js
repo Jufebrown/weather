@@ -64,3 +64,14 @@ angular
       },
     }
   })
+
+  .factory('authFactory', () => {
+    return {
+      login(email,pass) {
+        firebase.signInWithEmailAndPassword(email,pass)
+      },
+      getUserId () {
+        return firebase.auth().currentUser.uid
+      }
+    }
+  })
