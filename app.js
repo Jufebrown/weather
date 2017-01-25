@@ -12,6 +12,13 @@ angular
     };
     firebase.initializeApp(config);
 
+    const checkForAuth = {
+      checkForAuth: function($location) {
+        if (firbase.auth().currentUser === null) {
+          $location.url('/')
+        }
+      }
+    }
 
     $routeProvider
       .when('/', {
