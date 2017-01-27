@@ -54,8 +54,9 @@ angular
     $scope.gotoWeather = () => {$location.url(`/weather/${$scope.zip}`)}
   })
 
-  .controller('WeatherCtrl', function(weatherFactory, $routeParams, $scope) {
+  .controller('WeatherCtrl', function(weather, $scope, user) {
     console.log('I am a weather controller')
+    console.log('current user', user)
     weatherFactory
       .getWeather($routeParams.zipcode)
       .then((weather) => {
