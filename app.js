@@ -12,16 +12,16 @@ angular
     };
     firebase.initializeApp(config);
 
-    const checkForAuth = {
-      checkForAuth: function($location) {
-        const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-          unsubscribe()
-          if(!user) {
-            $location.url('/')
-          }
-        })
-      })
-    }
+    // const checkForAuth = {
+    //   checkForAuth: function($location) {
+    //     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+    //       unsubscribe()
+    //       if(!user) {
+    //         $location.url('/')
+    //       }
+    //     })
+    //   }
+    // }
 
     $routeProvider
       .when('/', {
