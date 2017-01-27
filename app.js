@@ -31,7 +31,21 @@ angular
       .when('/weather/:zipcode', {
         controller: 'WeatherCtrl',
         templateUrl: '/partials/weather.html',
-        resolve: checkForAuth
+        resolve: {
+          weather: (weatherFactory, $route) => {weatherFactory.getWeather($route.current.params.zipcode)},
+          user: ($q) => {
+            return $q((resolve, reject) => {
+              const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+                unsubscribe()
+                if(user){
+                  resolve(user)
+                } else {
+                  reject()
+                }
+              })
+            })
+          }
+        }
       })
   })
 
